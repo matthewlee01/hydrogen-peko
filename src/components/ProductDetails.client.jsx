@@ -1,12 +1,7 @@
 import {Product, flattenConnection, useProduct} from '@shopify/hydrogen/client';
 
-import ProductOptions from './ProductOptions.client';
 import Gallery from './Gallery.client';
 import Seo from './Seo.client';
-import {
-  BUTTON_PRIMARY_CLASSES,
-  BUTTON_SECONDARY_CLASSES,
-} from './Button.client';
 
 /**
  * A client component that displays detailed information about a product to allow buyers to make informed decisions
@@ -40,21 +35,14 @@ function AddToCartMarkup() {
 
   return (
     <div className="space-y-2 mb-8">
-      <Product.SelectedVariant.AddToCartButton
-        className={BUTTON_PRIMARY_CLASSES}
+      <Product.SelectedVariant.BuyNowButton
+        className={
+          'text-center font-mono font-semibold p-4 w-full border-4 border-white shadow-md bg-blue-600 text-white disabled:border-gray-300 disabled:bg-gray-300 disabled:shadow-none disabled:cursor-not-allowed'
+        }
         disabled={isOutOfStock}
       >
-        {isOutOfStock ? 'Out of stock' : 'Add to bag'}
-      </Product.SelectedVariant.AddToCartButton>
-      {isOutOfStock ? (
-        <p className="text-black text-center">Available in 2-3 weeks</p>
-      ) : (
-        <Product.SelectedVariant.BuyNowButton
-          className={BUTTON_SECONDARY_CLASSES}
-        >
-          Buy it now
-        </Product.SelectedVariant.BuyNowButton>
-      )}
+        {isOutOfStock ? 'Out of stock' : 'Order Now'}
+      </Product.SelectedVariant.BuyNowButton>
     </div>
   );
 }
@@ -148,7 +136,6 @@ export default function ProductDetails({product}) {
             </div>
             {/* Product Options */}
             <div className="mt-8">
-              <ProductOptions />
               <Product.Metafield namespace="my_fields" keyName="size_chart">
                 {({value}) => {
                   return value ? (

@@ -1,6 +1,3 @@
-import CartIcon from './CartIcon';
-import OpenIcon from './OpenIcon';
-
 /**
  * A shared component and Suspense call that's used in `App.server.jsx` to let your app wait for code to load while declaring a loading state
  */
@@ -12,12 +9,10 @@ export default function LoadingFallback() {
           <div className="text-center w-full flex justify-between items-center">
             <div className="hidden lg:block w-16" />
             <div className="lg:hidden flex justify-center items-center w-7 h-full">
-              <OpenIcon />
+              <p className="font-black uppercase text-3xl tracking-widest">
+                Peko Produce
+              </p>
             </div>
-            <p className="font-black uppercase text-3xl tracking-widest">
-              Snowdevil
-            </p>
-            <CartIcon />
           </div>
         </div>
       </div>
